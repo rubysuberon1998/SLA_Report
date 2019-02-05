@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DashBoard</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <style type="text/css">
+        #chart-container {
+            width: 640px;
+            height: auto;
+        }
+    </style>
+
+    <title>Practice</title>
+
+</head>
+<body>
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">DATAMATICS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">DASHBOARD <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">TRACKER</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="table.php">VIEW TICKETS</a>
+      </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="addaccountform.html">ADD ACCOUNT</a>
+      </li>
+    </ul>
+   
+  </div>
+</nav>
+</div>
+<p><h1><center>SLA REPORT FOR THE MONTH OF SEPTEMBER</center></h1></p>
+<p><h1><center>Date Coverage: September 1-31, 2018</center></h1></p>
+
+  
+
+ <div class="container">
+
+        <canvas id="mycanvas"></canvas>
+            
+    </div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <script src="js/chartapp.js"></script>
+
+    <!-- getting the data from the api -->
+    <script>
+         $.ajax({
+             type: 'GET',
+             url: 'http://localhost/jake/api/chartdata.php',
+            success: function (data) {
+
+                  console.log('success');
+             lineChartData = JSON.stringify(data); alert(JSON.stringify(data));
+             var myLine = new Chart(document.getElementById("mycanvas").getContext("2d")).Line(lineChartData);
+
+             var ctx = document.getElementById("mycanvas").getContext("2d");
+            window.myLine = new Chart(ctx).Line(lineChartData, {responsive: true});
+             } ,
+    error: function(data) {
+      console.log('error');
+      console.log(data);
+    }
+        });
+
+       
+    </script>
+</body>
+</html>
+
+</body>
+</html>
